@@ -1863,7 +1863,10 @@ function formatTime(s) {
 // ══════════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
   const now = new Date();
-  todayKey = now.toISOString().slice(0, 10); // "YYYY-MM-DD"
+    const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  todayKey = `${y}-${m}-${d}`;
 
   document.getElementById('date-display').textContent =
     now.toLocaleDateString('es-ES', {weekday:'short', day:'numeric', month:'long', year:'numeric'}).toUpperCase();
